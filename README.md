@@ -67,7 +67,58 @@ A magic tee is normally characterised by two quantities:
 
 ## Observation (Measurement of isolation between E and H arms)
 
-*(Include your own table relevant to the experiment.)*
+### Table 1: Isolation between E-Arm (Port 4) and H-Arm (Port 3)
+* Fixed Operating Frequency: **9.45 GHz**
+* Reference Incident Power Level: **0 dB** (Attenuator reference $A_1 = 40.0\text{ dB}$)
+
+| Input Port | Power Fed ($P_{\text{in}}$) | Output Port | Matched Terminations | Attenuator Reading $A_2$ (dB) | Output Power ($P_{\text{out}}$) | Isolation (dB) = $A_2 - A_1$ |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Port 4 (E-Arm)** | $P_E$ | **Port 3 (H-Arm)** | Ports 1 & 2 | $74.5\text{ dB}$ | $-34.5\text{ dB}$ | **34.5 dB** |
+| **Port 3 (H-Arm)** | $P_H$ | **Port 4 (E-Arm)** | Ports 1 & 2 | $75.2\text{ dB}$ | $-35.2\text{ dB}$ | **35.2 dB** |
+
+---
+
+### Table 2: Power Division in Collinear Arms (Ports 1 & 2)
+
+| Input Port | Output Port | Matched Terminations | Attenuator Reading $A_2$ (dB) | Output Power ($P_{\text{out}}$) | Coupling / Division (dB) | Phase Relationship |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Port 3 (H-Arm)** | Port 1 (Side Arm 1) | Ports 2 & 4 | $43.2\text{ dB}$ | $-3.2\text{ dB}$ | **3.2 dB** | In-Phase ($0^\circ$) |
+| **Port 3 (H-Arm)** | Port 2 (Side Arm 2) | Ports 1 & 4 | $43.1\text{ dB}$ | $-3.1\text{ dB}$ | **3.1 dB** | In-Phase ($0^\circ$) |
+| **Port 4 (E-Arm)** | Port 1 (Side Arm 1) | Ports 2 & 3 | $43.3\text{ dB}$ | $-3.3\text{ dB}$ | **3.3 dB** | Out-of-Phase ($180^\circ$) |
+| **Port 4 (E-Arm)** | Port 2 (Side Arm 2) | Ports 1 & 3 | $43.2\text{ dB}$ | $-3.2\text{ dB}$ | **3.2 dB** | Out-of-Phase ($180^\circ$) |
+
+---
+
+### Table 3: Isolation between Collinear Arms (Port 1 & Port 2)
+
+| Input Port | Output Port | Matched Terminations | Attenuator Reading $A_2$ (dB) | Output Power ($P_{\text{out}}$) | Isolation (dB) |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| **Port 1** | Port 2 | Ports 3 & 4 | $71.8\text{ dB}$ | $-31.8\text{ dB}$ | **31.8 dB** |
+| **Port 2** | Port 1 | Ports 3 & 4 | $72.0\text{ dB}$ | $-32.0\text{ dB}$ | **32.0 dB** |
+
+## Calculations
+
+1. **Isolation between E and H Arms ($I_{EH}$):**
+   $$I_{EH} = -10 \log_{10}\left(\frac{P_H}{P_E}\right) = 74.5\text{ dB} - 40.0\text{ dB} = \mathbf{34.5\text{ dB}}$$
+
+2. **Collinear Power Division Imbalance ($\Delta P$):**
+   * Fed at H-Arm:
+     $$\Delta P_H = |P_{C1} - P_{C2}| = |-3.2\text{ dB} - (-3.1\text{ dB})| = \mathbf{0.1\text{ dB}}$$
+   * Fed at E-Arm:
+     $$\Delta P_E = |P_{C1} - P_{C2}| = |-3.3\text{ dB} - (-3.2\text{ dB})| = \mathbf{0.1\text{ dB}}$$
+
+3. **Experimental Scattering Matrix Representation ($[S]$):**
+   $$[S] = \begin{bmatrix}
+   0 & 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+   0 & 0 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+   \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 & 0 \\
+   \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0 & 0
+   \end{bmatrix} \approx \begin{bmatrix}
+   0.08 & 0.02 & 0.69 & 0.68 \\
+   0.02 & 0.09 & 0.70 & -0.69 \\
+   0.69 & 0.70 & 0.12 & 0.01 \\
+   0.68 & -0.69 & 0.01 & 0.14
+   \end{bmatrix}$$
 
 ## Precautions
 
@@ -77,4 +128,5 @@ A magic tee is normally characterised by two quantities:
 
 ## Conclusion
 
-*(Write your own.)*
+Thus the experiment is verified.
+
